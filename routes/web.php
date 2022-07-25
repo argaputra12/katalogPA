@@ -27,7 +27,11 @@ use Illuminate\Routing\RouteGroup;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->user()) {
+        return view('welcome');
+    } else {
+        return view('index');
+    }
 });
 
 
@@ -35,7 +39,7 @@ Route::get('/home', function () {
     return view('index');
 });
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 

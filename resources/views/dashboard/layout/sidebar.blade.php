@@ -32,13 +32,13 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    @if (auth()->user()->role_id == 1)
+    @if (auth()->user() && auth()->user()->role_id == 1)
     <li class="nav-item">
         <a class="nav-link" href="/daftarHKI">
             Daftar HKI
         </a>
     </li>
-    @elseif(auth()->user()->role_id == 2)
+    @elseif(auth()->user() && auth()->user()->role_id == 2)
     <li class="nav-item ">
         <a class="nav-link " href="/">
             lalala
@@ -46,7 +46,7 @@
     </li>
 
 
-    @elseif(auth()->user()->role_id == 2)
+    @elseif(auth()->user() && auth()->user()->role_id == 2)
     <li class="nav-item ">
         <a class="nav-link " href="/dashboard/prediksi">
             lalala
@@ -58,7 +58,7 @@
             lalala
         </a>
     </li>
-    @elseif(auth()->user()->role_id == 3)
+    @elseif(auth()->user() && auth()->user()->role_id == 3)
     <li class="nav-item ">
         <a class="nav-link " href="/dashboard/laporan">
             lalala
