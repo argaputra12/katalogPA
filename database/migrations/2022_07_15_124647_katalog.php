@@ -24,7 +24,7 @@ class Katalog extends Migration
             $table->string('link_video');
             $table->string('link_demo');
             $table->string('link_HKI');
-            $table->foreignId('kategori_id')->constrained();
+            $table->foreignId('kategori_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
