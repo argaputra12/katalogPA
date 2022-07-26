@@ -24,8 +24,8 @@
 
                                 <center>
                                     <a href="tps">
-                                    <img class="gambar1 mb-5" src="images/silogo.png" class="img-fluid w-100">
-                                    <h4 class="mb-3">Transaction Processing System</h4>
+                                        <img class="gambar1 mb-5" src="images/silogo.png" class="img-fluid w-100">
+                                        <h4 class="mb-3">Transaction Processing System</h4>
                                 </center>
                             </div>
                         </div>
@@ -33,17 +33,17 @@
                         <div class="feature-item mb-4 mb-lg-0">
                             <div class="feature-icon mb-1">
                                 <a href="mis">
-                                <img class="gambar1 mb-5" src="images/datasciencelogo.png">
+                                    <img class="gambar1 mb-5" src="images/datasciencelogo.png">
                             </div>
                             <h4 class="mb-3">Management Information System</h4>
                         </div>
 
                         <div class="feature-item mb-4 mb-lg-0">
                             <a href="dss">
-                            <div class="feature-icon mb-1">
-                                <img class="gambar1 mb-5" src="images/datamininglogo.png">
-                            </div>
-                            <h4 class="mb-3">Decision Support System</h4>
+                                <div class="feature-icon mb-1">
+                                    <img class="gambar1 mb-5" src="images/datamininglogo.png">
+                                </div>
+                                <h4 class="mb-3">Decision Support System</h4>
                         </div>
 
                     </div>
@@ -76,7 +76,8 @@
                     <h2 class="text-md">Dashboard Daerah Rawan Gizi Buruk</h2>
                     <div class="divider my-4"></div>
                     <a>Abstrak</a>
-                    <p>Informasi seputar gizi buruk sangat penting untuk diketahui oleh masyarakat sebagai
+                    <p>
+                        Informasi seputar gizi buruk sangat penting untuk diketahui oleh masyarakat sebagai
                         pedoman agar kemudian hari gizi buruk dapat dicegah dan diantisipasi oleh
                         masyarakat. Dalam upaya mencegah gizi buruk dinas kesehatan selaku lembaga yang
                         berperan dalam bidang kesehatan bagi masyarakat perlu memberikan informasi
@@ -86,13 +87,13 @@
                         dibangun dengan menggunakan pemrograman PHP, dengan framework Codeigniter
                         dan database nya menggunakan MySQL. Metode pembangunan aplikasi
                         meggunakan metodologi Waterfall. Aplikasi ini hanya digunakan dalam dinas
-                        kesehatan dan puskesmas.</p>
+                        kesehatan dan puskesmas.
+                    </p>
 
                     <div class="d-grid  my-5">
                         <form action="/apk1">
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
-                            <button class="btn btn-outline-primary shadow col-4">Lihat Demo Aplikasi</button>
-
+                            <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/1IwdeqDgsGI">Lihat Demo Aplikasi</button>
                         </form>
 
                     </div>
@@ -100,6 +101,8 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 </section>
 
 
@@ -127,7 +130,7 @@
                     <div class="d-grid  my-5">
                         <form action="/apk1">
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
-                            <button class="btn btn-outline-primary shadow col-4">Lihat Demo Aplikasi</button>
+                            <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>
 
@@ -135,6 +138,8 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 </section>
 
 <section class="section service white-bg">
@@ -162,7 +167,7 @@
                     <div class="d-grid  my-5">
                         <form action="/apk1">
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
-                            <button class="btn btn-outline-primary shadow col-4">Lihat Demo Aplikasi</button>
+                            <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>
 
@@ -170,6 +175,8 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 </section>
 
 <section class="section service gray-bg">
@@ -196,7 +203,7 @@
                     <div class="d-grid  my-5">
                         <form action="/apk1">
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
-                            <button class="btn btn-outline-primary shadow col-4">Lihat Demo Aplikasi</button>
+                            <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>
 
@@ -204,6 +211,8 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 </section>
 
 <section class="section testimonial-2 white-bg">
@@ -303,5 +312,5 @@
     </div>
 </section>
 
-@endsection
 
+@endsection
