@@ -26,7 +26,8 @@ class DaftarHki extends Migration
             $table->string('url_ciptaan');
             $table->string('summary_katsinov');
             $table->string('link_ciptaan_katsinov');
-            $table->foreignId('role_id')->nullable()->constrained();
+            $table->enum('konfirmasi', ['Belum dikonfirmasi', 'disetujui', 'ditolak'])->nullable()->default('Belum dikonfirmasi');
+            $table->foreignId('user_id')->nullable()->constrained();
 
             $table->timestamps();
         });

@@ -17,14 +17,15 @@ class Katalog extends Migration
             $table->id();
             $table->string('judul');
             $table->string('deskripsi');
-            $table->bigInteger('Nim');
+            $table->string('nim');
             $table->string('nama_mhs');
             $table->string('pembimbing1');
             $table->string('pembimbing2');
             $table->string('link_video');
             $table->string('link_demo');
-            $table->string('link_HKI');
+            $table->string('link_hki');
             $table->foreignId('kategori_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

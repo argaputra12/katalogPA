@@ -17,7 +17,7 @@ class CreateKategorisTable extends Migration
             $table->id();
             $table->string('kategoriPA');
             $table->string('keterangan');
-            $table->foreignId('role_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

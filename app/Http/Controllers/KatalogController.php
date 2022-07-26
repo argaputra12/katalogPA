@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Katalog;
+use App\Models\Kategori;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreKatalogRequest;
 use App\Http\Requests\UpdateKatalogRequest;
 
@@ -15,7 +17,9 @@ class KatalogController extends Controller
      */
     public function index()
     {
-        return view('katalog');
+        return view('katalog', [
+            'list_katalog' => Katalog::all()
+        ]);
         //
     }
 
@@ -26,7 +30,9 @@ class KatalogController extends Controller
      */
     public function create()
     {
-        //
+        return view('katalog.create', [
+            'list_kategori' => Kategori::all()
+        ]);
     }
 
     /**
@@ -35,9 +41,24 @@ class KatalogController extends Controller
      * @param  \App\Http\Requests\StoreKatalogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKatalogRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'judul' => 'required|max:255',
+            'deskripsi' => 'required|max:255',
+            'nim' => 'required|max:255',
+            'nama_mhs' => 'required|max:255',
+            'pembimbing1' => 'required|max:255',
+            'pembimbing2' => 'required|max:255',
+            'link_video' => 'required|max:255',
+            'link_demo' => 'required|max:255',
+            'link_hki' => 'required|max:255',
+            'kategori_id' => 'required'
+        ]);
+
+        $validateData['user_id'] = auth()->user()->id;
+        Katalog::create($validateData);
+        return back()->with('success', 'Katalog Telah disimpan!');
     }
 
     /**
@@ -48,7 +69,9 @@ class KatalogController extends Controller
      */
     public function show(Katalog $katalog)
     {
-        //
+        return view('katalog.show', [
+            'katalog' => $katalog
+        ]);
     }
 
     /**
@@ -59,7 +82,10 @@ class KatalogController extends Controller
      */
     public function edit(Katalog $katalog)
     {
-        //
+        return view('katalog.edit', [
+            'katalog' => $katalog,
+            'list_kategori' => Kategori::all()
+        ]);
     }
 
     /**
@@ -69,9 +95,23 @@ class KatalogController extends Controller
      * @param  \App\Models\Katalog  $katalog
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKatalogRequest $request, Katalog $katalog)
+    public function update(Request $request, Katalog $katalog)
     {
-        //
+        $validateData = $request->validate([
+            'judul' => 'required|max:255',
+            'deskripsi' => 'required|max:255',
+            'nim' => 'required|max:255',
+            'nama_mhs' => 'required|max:255',
+            'pembimbing1' => 'required|max:255',
+            'pembimbing2' => 'required|max:255',
+            'link_video' => 'required|max:255',
+            'link_demo' => 'required|max:255',
+            'link_hki' => 'required|max:255',
+            'kategori_id' => 'required'
+        ]);
+
+        Katalog::where('id', $katalog->id)->update($validateData);
+        return back()->with('success', 'Katalog Telah disimpan!');
     }
 
     /**
@@ -82,6 +122,7 @@ class KatalogController extends Controller
      */
     public function destroy(Katalog $katalog)
     {
-        //
+        Katalog::destroy($katalog->id);
+        return back()->with('success', 'Berita telah dihapus / dinonaktifkan!');
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DaftarHKI;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreDaftarHKIRequest;
 use App\Http\Requests\UpdateDaftarHKIRequest;
 
@@ -15,8 +18,9 @@ class DaftarHKIController extends Controller
      */
     public function index()
     {
-
-        return view('daftarHKI');
+        return view('daftarHKI', [
+            'list_hki' => DaftarHKI::where('user_id', auth()->user()->id)->get()
+        ]);
         //
     }
 
@@ -27,7 +31,6 @@ class DaftarHKIController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,9 +39,38 @@ class DaftarHKIController extends Controller
      * @param  \App\Http\Requests\StoreDaftarHKIRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDaftarHKIRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'kategoriKI' => 'required|max:255',
+            'jenisKI' => 'required|max:255',
+            'subjenisKI' => 'required|max:255',
+            'judulKI' => 'required|max:255',
+            'surat_pernyataan_internal' => 'file|max:100024',
+            'surat_pengalihan_hakcipta' => 'file|max:100024',
+            'scan_ktp' => 'file|max:100024',
+            'contoh_ciptaan' => 'file|max:100024',
+            'url_ciptaan' => 'required',
+            'summary_katsinov' => 'required',
+            'link_ciptaan_katsinov' => 'required',
+            'isi' => 'required',
+        ]);
+
+        if ($request->file('surat_pernyataan_internal')) {
+            $validateData['surat_pernyataan_internal'] = $request->file('surat_pernyataan_internal')->store('surat-pernyataan-internal');
+        }
+        if ($request->file('surat_pengalihan_hakcipta')) {
+            $validateData['surat_pengalihan_hakcipta'] = $request->file('surat_pengalihan_hakcipta')->store('surat-pengalihan-hakcipta');
+        }
+        if ($request->file('scan_ktp')) {
+            $validateData['scan_ktp'] = $request->file('scan_ktp')->store('scan-ktp');
+        }
+        if ($request->file('contoh_ciptaan')) {
+            $validateData['contoh_ciptaan'] = $request->file('contoh_ciptaan')->store('contoh-ciptaan');
+        }
+        $validateData['user_id'] = auth()->user()->id;
+        DaftarHKI::create($validateData);
+        return back()->with('success', 'HKI Berhasil didaftarkan!');
     }
 
     /**
@@ -49,7 +81,9 @@ class DaftarHKIController extends Controller
      */
     public function show(DaftarHKI $daftarHKI)
     {
-        //
+        return view('mahasiswa.hki.show', [
+            'hki' => $daftarHKI
+        ]);
     }
 
     /**

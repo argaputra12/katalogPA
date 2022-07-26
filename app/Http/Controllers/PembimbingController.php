@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembimbing;
+use App\Models\DaftarHKI;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorePembimbingRequest;
 use App\Http\Requests\UpdatePembimbingRequest;
 
@@ -18,6 +20,20 @@ class PembimbingController extends Controller
         return view('pembimbing');
         //
 
+    }
+    public function listHKI()
+    {
+        return view('pembimbing.hki', [
+            'list_hki' => DaftarHKI::all()
+        ]);
+    }
+
+    public function konfirmasiHKI(Request $request)
+    {
+        DaftarHKI::where('id', $request->id)->update([
+            'konfirmasi' => $request->konfirmasi
+        ]);
+        return back()->with('success', "HKI Telah $request->konfirmasi !");
     }
 
     /**

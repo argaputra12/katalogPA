@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DaftarHKI extends Model
 {
     use HasFactory;
+    protected $table = 'daftar_hkis';
     protected $guarded = ['id'];
 }
