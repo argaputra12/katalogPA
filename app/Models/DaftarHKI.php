@@ -10,4 +10,9 @@ class DaftarHKI extends Model
     use HasFactory;
     protected $table = 'daftar_hkis';
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

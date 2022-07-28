@@ -55,10 +55,15 @@
             Laporan
         </a>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="/pembimbing/hki">
+            HKI Mahasiswa
+        </a>
+    </li>
     @elseif(auth()->user() && auth()->user()->role_id == 3)
     <li class="nav-item ">
         <a class="nav-link " href="/dashboard/laporan">
-            lalala
+            Laporan
         </a>
     </li>
     @elseif(auth()->user() && auth()->user()->role_id == 4)

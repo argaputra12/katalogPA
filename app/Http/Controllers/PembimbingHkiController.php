@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembimbing;
 use App\Models\Hki;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePembimbingRequest;
-use App\Http\Requests\UpdatePembimbingRequest;
 
-class PembimbingController extends Controller
+class PembimbingHkiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +14,6 @@ class PembimbingController extends Controller
      */
     public function index()
     {
-        return view('pembimbing');
-        //
-
-    }
-    public function listHKI()
-    {
         return view('pembimbing.hki.index', [
             'list_hki' => Hki::all()
         ]);
@@ -30,7 +21,6 @@ class PembimbingController extends Controller
 
     public function konfirmasiHKI(Request $request, Hki $hki)
     {
-        echo $request->konfirmasi;
         Hki::where('id', $hki->id)->update([
             'konfirmasi' => $request->konfirmasi
         ]);
@@ -50,10 +40,10 @@ class PembimbingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePembimbingRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePembimbingRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -61,10 +51,10 @@ class PembimbingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembimbing $pembimbing)
+    public function show(Hki $hki)
     {
         //
     }
@@ -72,10 +62,10 @@ class PembimbingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembimbing $pembimbing)
+    public function edit(Hki $hki)
     {
         //
     }
@@ -83,11 +73,11 @@ class PembimbingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePembimbingRequest  $request
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePembimbingRequest $request, Pembimbing $pembimbing)
+    public function update(Request $request, Hki $hki)
     {
         //
     }
@@ -95,10 +85,10 @@ class PembimbingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembimbing  $pembimbing
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembimbing $pembimbing)
+    public function destroy(Hki $hki)
     {
         //
     }

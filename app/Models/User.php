@@ -19,4 +19,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function hki()
+    {
+        return $this->hasMany(Hki::class);
+    }
+
+    public function katalog()
+    {
+        return $this->hasMany(Katalog::class);
+    }
+
+    public function daftarHki()
+    {
+        return $this->hasMany(DaftarHKI::class);
+    }
 }
