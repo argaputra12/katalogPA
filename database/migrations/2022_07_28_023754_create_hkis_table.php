@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DaftarHki extends Migration
+class CreateHkisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class DaftarHki extends Migration
      */
     public function up()
     {
-        Schema::create('daftar_hkis', function (Blueprint $table) {
+        Schema::create('hkis', function (Blueprint $table) {
             $table->id();
             $table->string('kategori_ki');
             $table->string('jenis_ki');
@@ -40,6 +40,6 @@ class DaftarHki extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daftar_hkis');
+        Schema::dropIfExists('hkis');
     }
 }

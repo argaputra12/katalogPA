@@ -13,23 +13,28 @@
 </div>
 
 <div class="container shadow mb-5 alice">
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-12" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="row">
         <div class="col gray-bg">
             <h6 class="my-4">Form Data Pengusul</h6>
             <hr>
-            <form action="/DaftarHKI" method="post" enctype="multipart/form-data">
+            <form action="/daftarHKI" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <label for="kategoriKI" class="col-sm-4 col-form-label">Kategori KI</label>
+                    <label for="kategori_ki" class="col-sm-4 col-form-label">Kategori KI</label>
     
                     <div class="col-sm-7">
                         <!-- <input class="form-control form-control-sm" id="formFileSm" type="text mb-2"> -->
                         <div class="input-group mb-3 ">
-                            <select class="form-select form-control form-control-sm @error('kategoriKI') is-invalid @enderror" id="kategoriKI" name="kategoriKI" value="{{ old('kategoriKI') }}">
+                            <select class="form-select form-control form-control-sm @error('kategori_ki') is-invalid @enderror" id="kategori_ki" name="kategori_ki" value="{{ old('kategori_ki') }}">
                                 <option selected>Pilih Kategori</option>
                                 <option value="1">Daftar HKI</option>
                             </select>
-                            @error('kategoriKI')
+                            @error('kategori_ki')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -39,12 +44,12 @@
                 </div>
     
                 <div class="row">
-                    <label for="jenisKI" class="col-sm-4 col-form-label">Jenis KI</label>
+                    <label for="jenis_ki" class="col-sm-4 col-form-label">Jenis KI</label>
     
                     <div class="col-sm-7">
                         <!-- <input class="form-control form-control-sm" id="formFileSm" type="text mb-2"> -->
                         <div class="input-group mb-3 ">
-                            <select class="form-select form-control form-control-sm @error('jenisKI') is-invalid @enderror" id="jenisKI" name="jenisKI" value="{{ old('jenisKI') }}">
+                            <select class="form-select form-control form-control-sm @error('jenis_ki') is-invalid @enderror" id="jenis_ki" name="jenis_ki" value="{{ old('jenis_ki') }}">
                                 <option selected disabled>Pilih Jenis KI</option>
                                 <option value="Hak Cipta">Hak Cipta</option>
                                 <option value="Paten">Paten</option>
@@ -54,7 +59,7 @@
                                 <option value="Rahasia Dagang">Rahasia Dagang</option>
                                 <option value="Desain Tata Letak Sirkuit terpadu">Desain Tata Letak Sirkuit terpadu</option>
                             </select>
-                            @error('jenisKI')
+                            @error('jenis_ki')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -64,12 +69,12 @@
                 </div>
     
                 <div class="row">
-                    <label for="subjenisKI" class="col-sm-4 col-form-label">Subjenis KI</label>
+                    <label for="subjenis_ki" class="col-sm-4 col-form-label">Subjenis KI</label>
     
                     <div class="col-sm-7">
                         <!-- <input class="form-control form-control-sm" id="formFileSm" type="text mb-2"> -->
                         <div class="input-group mb-3 ">
-                            <select class="form-select form-control form-control-sm @error('subjenisKI') is-invalid @enderror" id="subjenisKI" name="subjenisKI" value="{{ old('subjenisKI') }}">
+                            <select class="form-select form-control form-control-sm @error('subjenis_ki') is-invalid @enderror" id="subjenis_ki" name="subjenis_ki" value="{{ old('subjenis_ki') }}">
                                 <option selected>Pilih Subjenis KI</option>
                                 <option value="Buku">Buku</option>
                                 <option value="Ceramah">Ceramah</option>
@@ -91,8 +96,9 @@
                                 <option value="Aplikasi Web">Aplikasi Web</option>
                                 <option value="Aplikasi Android">Aplikasi Android</option>
                                 <option value="Aplikasi iOS">Aplikasi iOS</option>
+                                <option value="Aplikasi iOS">Karya Ilmiah</option>
                             </select>
-                            @error('subjenisKI')
+                            @error('subjenis_ki')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -102,10 +108,10 @@
                 </div>
     
                 <div class=" row">
-                    <label for="judulKI" class="col-sm-4 col-form-label">Judul KI</label>
+                    <label for="judul_ki" class="col-sm-4 col-form-label">Judul KI</label>
                     <div class="col-sm-7">
-                        <input class="form-control form-control-sm @error('judulKI') is-invalid @enderror" id="judulKI" name="judulKI" type="text" value="{{ old('judulKI') }}">
-                        @error('judulKI')
+                        <input class="form-control form-control-sm @error('judul_ki') is-invalid @enderror" id="judul_ki" name="judul_ki" type="text" value="{{ old('judul_ki') }}">
+                        @error('judul_ki')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -157,6 +163,17 @@
                     </div>
                 </div>
                 <div class=" row">
+                    <label for="url_ciptaan" class="col-sm-4 col-form-label">URL Ciptaan</label>
+                    <div class="col-sm-7">
+                        <input class="form-control form-control-sm @error('url_ciptaan') is-invalid @enderror" id="url_ciptaan" name="url_ciptaan" type="text" value="{{ old('url_ciptaan') }}">
+                        @error('url_ciptaan')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class=" row">
                     <label for="summary_katsinov" class="col-sm-4 col-form-label">Summary Katsinov</label>
                     <div class="col-sm-7">
                         <input class="form-control form-control-sm @error('summary_katsinov') is-invalid @enderror" id="summary_katsinov" name="summary_katsinov" type="text" value="{{ old('summary_katsinov') }}">
@@ -180,9 +197,7 @@
                 </div>
                 <center>
                     <div class="d-grid gap-4 my-5">
-                        <form action="/formpengusul">
-                            <button class="btn btn-outline-success shadow btn-sm col-10">Simpan dan lanjutkan</button>
-                        </form>
+                        <button type="submit" class="btn btn-outline-success shadow btn-sm col-10">Simpan dan lanjutkan</button>
                     </div>
                 </center>
             </form>

@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TpsController;
 use App\Http\Controllers\MisController;
 use App\Http\Controllers\DssController;
+use App\Http\Controllers\HkiController;
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -75,5 +76,6 @@ Route::group(['middleware' => ['auth', 'cekRole:4']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
-    Route::get('/daftarHKI', [DaftarHKIController::class, 'create']);
+    Route::get('/daftarHKI', [HkiController::class, 'create']);
+    Route::post('/daftarHKI', [HkiController::class, 'store']);
 });

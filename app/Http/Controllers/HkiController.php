@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DaftarHKI;
+use App\Models\Hki;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\StoreDaftarHKIRequest;
-use App\Http\Requests\UpdateDaftarHKIRequest;
 
-class DaftarHKIController extends Controller
+class HkiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +15,8 @@ class DaftarHKIController extends Controller
     public function index()
     {
         return view('daftarHKI', [
-            'list_hki' => DaftarHKI::where('user_id', auth()->user()->id)->get()
+            'list_hki' => Hki::where('user_id', auth()->user()->id)->get()
         ]);
-        //
     }
 
     /**
@@ -32,14 +27,14 @@ class DaftarHKIController extends Controller
     public function create()
     {
         return view('mahasiswa.hki.create', [
-            'list_hki' => DaftarHKI::where('user_id', auth()->user()->id)->get()
+            'list_hki' => Hki::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDaftarHKIRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -71,30 +66,30 @@ class DaftarHKIController extends Controller
             $validateData['contoh_ciptaan'] = $request->file('contoh_ciptaan')->store('contoh-ciptaan');
         }
         $validateData['user_id'] = auth()->user()->id;
-        DaftarHKI::create($validateData);
+        Hki::create($validateData);
         return back()->with('success', 'HKI Berhasil didaftarkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DaftarHKI  $daftarHKI
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function show(DaftarHKI $daftarHKI)
+    public function show(Hki $hki)
     {
         return view('mahasiswa.hki.show', [
-            'hki' => $daftarHKI
+            'hki' => $hki
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DaftarHKI  $daftarHKI
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function edit(DaftarHKI $daftarHKI)
+    public function edit(Hki $hki)
     {
         //
     }
@@ -102,11 +97,11 @@ class DaftarHKIController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDaftarHKIRequest  $request
-     * @param  \App\Models\DaftarHKI  $daftarHKI
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDaftarHKIRequest $request, DaftarHKI $daftarHKI)
+    public function update(Request $request, Hki $hki)
     {
         //
     }
@@ -114,10 +109,10 @@ class DaftarHKIController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DaftarHKI  $daftarHKI
+     * @param  \App\Models\Hki  $hki
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DaftarHKI $daftarHKI)
+    public function destroy(Hki $hki)
     {
         //
     }
