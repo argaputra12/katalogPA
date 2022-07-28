@@ -31,6 +31,9 @@ class DaftarHKIController extends Controller
      */
     public function create()
     {
+        return view('mahasiswa.hki.create', [
+            'list_hki' => DaftarHKI::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**

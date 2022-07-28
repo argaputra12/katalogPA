@@ -75,5 +75,5 @@ Route::group(['middleware' => ['auth', 'cekRole:4']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
-    Route::get('/daftarHKI', [DaftarHKIController::class, 'index']);
+    Route::get('/daftarHKI', [DaftarHKIController::class, 'create']);
 });
