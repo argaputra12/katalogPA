@@ -38,6 +38,11 @@
             Daftar HKI
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/mahasiswa/hki">
+            HKI Saya
+        </a>
+    </li>
     @elseif(auth()->user() && auth()->user()->role_id == 2)
     <li class="nav-item ">
         <a class="nav-link " href="/">
@@ -61,6 +66,11 @@
         </a>
     </li>
     @elseif(auth()->user() && auth()->user()->role_id == 3)
+    <li class="nav-item ">
+        <a class="nav-link " href="/kaprodi/hki">
+            HKI Mahasiswa
+        </a>
+    </li>
     <li class="nav-item ">
         <a class="nav-link " href="/dashboard/laporan">
             Laporan

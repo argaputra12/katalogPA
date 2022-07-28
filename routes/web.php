@@ -15,6 +15,8 @@ use App\Http\Controllers\TpsController;
 use App\Http\Controllers\MisController;
 use App\Http\Controllers\DssController;
 use App\Http\Controllers\HkiController;
+use App\Http\Controllers\KaprodiHKIController;
+use App\Http\Controllers\MahasiswaHkiController;
 use App\Http\Controllers\PembimbingHkiController;
 use Illuminate\Routing\RouteGroup;
 
@@ -86,4 +88,6 @@ Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
 
 Route::resource('/admin/katalog', AdminKatalogController::class);
 Route::resource('/pembimbing/hki', PembimbingHkiController::class);
+Route::get('/kaprodi/hki', [KaprodiHKIController::class, 'index']);
 Route::put('/pembimbing/konfirmasiHKI/{hki}', [PembimbingHkiController::class, 'konfirmasiHKI']);
+Route::resource('/mahasiswa/hki', MahasiswaHkiController::class);
