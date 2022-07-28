@@ -41,40 +41,73 @@
                     </thead>
                     <tbody align="center">
                         @foreach ($list_hki as $hki)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $hki->kategori_ki }}</td>
-                                <td>{{ $hki->jenis_ki }}</td>
-                                <td>{{ $hki->subjenis_ki }}</td>
-                                <td>{{ $hki->judul_ki }}</td>
-                                <td>{{ $hki->url_ciptaan }}</td>
-                                <td>{{ $hki->summary_katsinov }}</td>
-                                <td>{{ $hki->link_ciptaan_katsinov }}</td>
-                                <td>{{ $hki->konfirmasi }}</td>
-                                {{-- <td>{{ $hki->created_at->diffForHumans() }}</td> --}}
-                                <td>{{ date('d-m-Y', strtotime($hki->created_at)) }}</td>
-                                <td>
-                                    {{-- <a href="/pembimbing/hki/{{ $hki->id }}" class="badge bg-info" title="Detail">
-                                        <span data-feather="eye"></span>
-                                        Detail
-                                    </a> --}}
-                                    @if ($hki->konfirmasi == "Belum dikonfirmasi")
-                                    <form action="/pembimbing/konfirmasiHKI/{{ $hki->id }}" method="post" class="d-inline">
-                                        @method('put')
-                                        @csrf
-                                        <input type="hidden" name="konfirmasi" value="disetujui">
-                                        <button type="submit" class="btn btn-success btn-sm" title="Setujui">Setujui</button>
-                                    </form>
-                                    <form action="/pembimbing/konfirmasiHKI/{{ $hki->id }}" method="post" class="d-inline">
-                                        @method('put')
-                                        @csrf
-                                        <input type="hidden" name="konfirmasi" value="ditolak">
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Tolak">Tolak</button>
-                                    </form>
-                                    @endif
-                                    <a href="/pembimbing/hki/{{ $hki->id }}/edit" class="btn btn-primary btn-sm mt-2">Lihat Berkas</a>
-                                </td>
-                            </tr>                            
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $hki->kategori_ki }}</td>
+                            <td>{{ $hki->jenis_ki }}</td>
+                            <td>{{ $hki->subjenis_ki }}</td>
+                            <td>{{ $hki->judul_ki }}</td>
+                            <td>{{ $hki->url_ciptaan }}</td>
+                            <td>{{ $hki->summary_katsinov }}</td>
+                            <td>{{ $hki->link_ciptaan_katsinov }}</td>
+                            <td>{{ $hki->konfirmasi }}</td>
+                            {{-- <td>{{ $hki->created_at->diffForHumans() }}</td> --}}
+                            <td>{{ date('d-m-Y', strtotime($hki->created_at)) }}</td>
+                            <td>
+                                {{-- <a href="/pembimbing/hki/{{ $hki->id }}" class="badge bg-info" title="Detail">
+                                <span data-feather="eye"></span>
+                                Detail
+                                </a> --}}
+                                @if ($hki->konfirmasi == "Belum dikonfirmasi")
+                                <form action="/pembimbing/konfirmasiHKI/{{ $hki->id }}" method="post" class="d-inline">
+                                    @method('put')
+                                    @csrf
+                                    <input type="hidden" name="konfirmasi" value="disetujui">
+                                    <button type="submit" class="btn btn-success btn-sm" title="Setujui">Setujui</button>
+                                </form>
+                                <form action="/pembimbing/konfirmasiHKI/{{ $hki->id }}" method="post" class="d-inline">
+                                    @method('put')
+                                    @csrf
+                                    <input type="hidden" name="konfirmasi" value="ditolak">
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Tolak">Tolak</button>
+                                </form>
+                                @endif
+                                <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#berkasModal{{ $hki->id }}">Lihat Berkas</button>
+                                <!-- Button trigger modal -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="berkasModal{{ $hki->id }}" tabindex="-1" aria-labelledby="berkasModalLabel{{ $hki->id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="berkasModalLabel{{ $hki->id }}">Berkas</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="modal-body text-start">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{{ asset("storage/$hki->surat_pernyataan_internal") }}"><i class="fa-solid fa-download"></i> Surat Pernyataan Internal</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ asset("storage/$hki->surat_pengalihan_hakcipta") }}"><i class="fa-solid fa-download"></i> Surat Pengalihan Hak Cipta</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ asset("storage/$hki->scan_ktp") }}"><i class="fa-solid fa-download"></i> Scan KTP</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ asset("storage/$hki->contoh_ciptaan") }}"><i class="fa-solid fa-download"></i> Contoh Ciptaan</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
