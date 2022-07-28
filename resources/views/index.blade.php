@@ -71,6 +71,7 @@
 
 
             </div>
+            
             <div class="col-lg-8 col-md-6">
                 <div class="doctor-details mt-4 mt-lg-0">
                     <h2 class="text-md">Dashboard Daerah Rawan Gizi Buruk</h2>
