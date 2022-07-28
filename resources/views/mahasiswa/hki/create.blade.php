@@ -32,7 +32,7 @@
                         <div class="input-group mb-3 ">
                             <select class="form-select form-control form-control-sm @error('kategori_ki') is-invalid @enderror" id="kategori_ki" name="kategori_ki" value="{{ old('kategori_ki') }}">
                                 <option selected>Pilih Kategori</option>
-                                <option value="1">Daftar HKI</option>
+                                <option value="Daftar HKI" @if (old('jenis_ki') == "Daftar HKI") selected @endif>Daftar HKI</option>
                             </select>
                             @error('kategori_ki')
                                 <div class="invalid-feedback">
@@ -51,13 +51,13 @@
                         <div class="input-group mb-3 ">
                             <select class="form-select form-control form-control-sm @error('jenis_ki') is-invalid @enderror" id="jenis_ki" name="jenis_ki" value="{{ old('jenis_ki') }}">
                                 <option selected disabled>Pilih Jenis KI</option>
-                                <option value="Hak Cipta">Hak Cipta</option>
-                                <option value="Paten">Paten</option>
-                                <option value="Merek">Merek</option>
-                                <option value="Desain Industri">Desain Industri</option>
-                                <option value="Indikasi Geografis">Indikasi Geografis</option>
-                                <option value="Rahasia Dagang">Rahasia Dagang</option>
-                                <option value="Desain Tata Letak Sirkuit terpadu">Desain Tata Letak Sirkuit terpadu</option>
+                                <option value="Hak Cipta" @if (old('jenis_ki') == "Hak Cipta") selected @endif>Hak Cipta</option>
+                                <option value="Paten" @if (old('jenis_ki') == "Paten") selected @endif>Paten</option>
+                                <option value="Merek" @if (old('jenis_ki') == "Merek") selected @endif>Merek</option>
+                                <option value="Desain Industri" @if (old('jenis_ki') == "Desain Industri") selected @endif>Desain Industri</option>
+                                <option value="Indikasi Geografis" @if (old('jenis_ki') == "Indikasi Geografis") selected @endif>Indikasi Geografis</option>
+                                <option value="Rahasia Dagang" @if (old('jenis_ki') == "Rahasia Dagang") selected @endif>Rahasia Dagang</option>
+                                <option value="Desain Tata Letak Sirkuit terpadu" @if (old('jenis_ki') == "Desain Tata Letak Sirkuit terpadu") selected @endif>Desain Tata Letak Sirkuit terpadu</option>
                             </select>
                             @error('jenis_ki')
                                 <div class="invalid-feedback">
@@ -76,27 +76,27 @@
                         <div class="input-group mb-3 ">
                             <select class="form-select form-control form-control-sm @error('subjenis_ki') is-invalid @enderror" id="subjenis_ki" name="subjenis_ki" value="{{ old('subjenis_ki') }}">
                                 <option selected>Pilih Subjenis KI</option>
-                                <option value="Buku">Buku</option>
-                                <option value="Ceramah">Ceramah</option>
-                                <option value="Alat Peraga">Alat Peraga</option>
-                                <option value="Lagu atau Musik">Lagu atau Musik</option>
-                                <option value="Drama">Drama</option>
-                                <option value="Seni Rupa">Seni Rupa</option>
-                                <option value="Arsitektur">Arsitektur</option>
-                                <option value="Peta">Peta</option>
-                                <option value="Seni Batik">Seni Batik</option>
-                                <option value="Fotografi">Fotografi</option>
-                                <option value="Terjemahan">Terjemahan</option>
-                                <option value="Paten">Paten</option>
-                                <option value="Paten Sederhana">Paten Sederhana</option>
-                                <option value="Merek">Merek</option>
-                                <option value="Desain Industri">Desain Industri</option>
-                                <option value="Geografis">Geografis</option>
-                                <option value="DTLST">DTLST</option>
-                                <option value="Aplikasi Web">Aplikasi Web</option>
-                                <option value="Aplikasi Android">Aplikasi Android</option>
-                                <option value="Aplikasi iOS">Aplikasi iOS</option>
-                                <option value="Aplikasi iOS">Karya Ilmiah</option>
+                                <option @if (old('subjenis_ki') == "Buku") selected @endif value="Buku">Buku</option>
+                                <option @if (old('subjenis_ki') == "Ceramah") selected @endif value="Ceramah">Ceramah</option>
+                                <option @if (old('subjenis_ki') == "Alat Peraga") selected @endif value="Alat Peraga">Alat Peraga</option>
+                                <option @if (old('subjenis_ki') == "Lagu atau Musik") selected @endif value="Lagu atau Musik">Lagu atau Musik</option>
+                                <option @if (old('subjenis_ki') == "Drama") selected @endif value="Drama">Drama</option>
+                                <option @if (old('subjenis_ki') == "Seni Rupa") selected @endif value="Seni Rupa">Seni Rupa</option>
+                                <option @if (old('subjenis_ki') == "Arsitektur") selected @endif value="Arsitektur">Arsitektur</option>
+                                <option @if (old('subjenis_ki') == "Peta") selected @endif value="Peta">Peta</option>
+                                <option @if (old('subjenis_ki') == "Seni Batik") selected @endif value="Seni Batik">Seni Batik</option>
+                                <option @if (old('subjenis_ki') == "Fotografi") selected @endif value="Fotografi">Fotografi</option>
+                                <option @if (old('subjenis_ki') == "Terjemahan") selected @endif value="Terjemahan">Terjemahan</option>
+                                <option @if (old('subjenis_ki') == "Paten") selected @endif value="Paten">Paten</option>
+                                <option @if (old('subjenis_ki') == "Paten Sederhana") selected @endif value="Paten Sederhana">Paten Sederhana</option>
+                                <option @if (old('subjenis_ki') == "Merek") selected @endif value="Merek">Merek</option>
+                                <option @if (old('subjenis_ki') == "Desain Industri") selected @endif value="Desain Industri">Desain Industri</option>
+                                <option @if (old('subjenis_ki') == "Geografis") selected @endif value="Geografis">Geografis</option>
+                                <option @if (old('subjenis_ki') == "DTLST") selected @endif value="DTLST">DTLST</option>
+                                <option @if (old('subjenis_ki') == "Aplikasi Web") selected @endif value="Aplikasi Web">Aplikasi Web</option>
+                                <option @if (old('subjenis_ki') == "Aplikasi Android") selected @endif value="Aplikasi Android">Aplikasi Android</option>
+                                <option @if (old('subjenis_ki') == "Aplikasi iOS") selected @endif value="Aplikasi iOS">Aplikasi iOS</option>
+                                <option @if (old('subjenis_ki') == "Karya Ilmiah") selected @endif value="Aplikasi iOS">Karya Ilmiah</option>
                             </select>
                             @error('subjenis_ki')
                                 <div class="invalid-feedback">

@@ -7,6 +7,7 @@ use App\Http\Controllers\FormpengusulController;
 use App\Http\Controllers\DaftarHKIController;
 use App\Http\Controllers\DatapengusulController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminKatalogController;
 use App\Http\Controllers\Apk1Controller;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\DashboardController;
@@ -81,6 +82,5 @@ Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
 });
 
 
-Route::get('/admin/katalog', [KatalogController::class, 'index']);
 
 Route::resource('/admin/katalog', AdminKatalogController::class);

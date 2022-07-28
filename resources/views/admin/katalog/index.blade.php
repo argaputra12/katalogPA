@@ -8,38 +8,60 @@
 </div>
 
 <div class="row">
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-12" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
 
     <!-- Isi DIsini -->
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Pengusul HKI</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Katalog</h6>
         </div>
         <div class="card-body">
+
+            <a href="/admin/katalog/create" class="btn btn-primary mb-3">Buat Katalog Baru</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead align="center">
                         <tr>
-                            <th>Judul Katalog</th>
-                            <th>NIM</th>
-                            <th>Nama Mahasiswa</th>
-                            <th>Action</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Judul Katalog</th>
+                            <th scope="col">NIM</th>
+                            <th scope="col">Nama Mahasiswa</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody align="center">
-                        <tr>
-                            <td>
-                                <a href=""><img src="/images/edit.png" style="width: 20px;" class="mr-3"></a>
-                                <a href=""><img src="/images/delete.png" style="width: 20px;" alt="delete"></a>
-                            </td>
-                            <td>Uden Sudrajat</td>
-                            <td>D3 Sistem Informasi</td>
-                            <td>udhaentea@gmail.com</td>
-                            <td>Karawang</td>
-                            <td>
-                                <a href="">Approve</a>
-                            </td>
-                        </tr>
+                        @foreach ($list_katalog as $katalog)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $katalog->judul }}</td>
+                                <td>{{ $katalog->nim }}</td>
+                                <td>{{ $katalog->nama_mhs }}</td>
+                                <td>
+                                    {{-- <a href="/admin/katalog/{{ $katalog->id }}" class="badge bg-info" title="Detail">
+                                        <span data-feather="eye"></span>
+                                        Detail
+                                    </a> --}}
+                                    <a href="/admin/katalog/{{ $katalog->id }}/edit" class="badge bg-success" title="Edit">
+                                        {{-- <span data-feather="edit"></span> --}}
+                                        {{-- Edit --}}
+                                        Detail
+                                    </a>
+                                    <form action="/admin/katalog/{{ $katalog->id }}" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are Your Sure?')" title="Hapus">
+                                            {{-- <span data-feather="x-circle"></span> --}}
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>                            
+                        @endforeach
                     </tbody>
                 </table>
             </div>

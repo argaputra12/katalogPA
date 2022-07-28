@@ -68,8 +68,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link icofont-table" href="/pembimbing">
-            Daftar Pengusul HKI
+        <a class="nav-link icofont-table" href="/admin/katalog">
+            Katalog
         </a>
     </li>
     @endif

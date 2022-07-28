@@ -15,7 +15,7 @@ class AdminKatalogController extends Controller
      */
     public function index()
     {
-        return view('admin.katalog', [
+        return view('admin.katalog.index', [
             'list_katalog' => Katalog::all()
         ]);
     }
@@ -120,6 +120,6 @@ class AdminKatalogController extends Controller
     public function destroy(Katalog $katalog)
     {
         Katalog::destroy($katalog->id);
-        return back()->with('success', 'Katalog telah dihapus / dinonaktifkan!');
+        return back()->with('success', 'Katalog telah dihapus!');
     }
 }
