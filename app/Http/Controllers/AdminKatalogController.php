@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Katalog;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreKatalogRequest;
-use App\Http\Requests\UpdateKatalogRequest;
 
-class KatalogController extends Controller
+class AdminKatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class KatalogController extends Controller
      */
     public function index()
     {
-        return view('katalog', [
+        return view('admin.katalog', [
             'list_katalog' => Katalog::all()
         ]);
     }
@@ -29,7 +27,7 @@ class KatalogController extends Controller
      */
     public function create()
     {
-        return view('katalog.create', [
+        return view('admin.katalog.create', [
             'list_kategori' => Kategori::all()
         ]);
     }
@@ -37,7 +35,7 @@ class KatalogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreKatalogRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,7 +55,7 @@ class KatalogController extends Controller
 
         $validateData['user_id'] = auth()->user()->id;
         Katalog::create($validateData);
-        return back()->with('success', 'Katalog Telah disimpan!');
+        return redirect('/admin/katalog')->with('success', 'Katalog Telah disimpan!');
     }
 
     /**
@@ -68,7 +66,7 @@ class KatalogController extends Controller
      */
     public function show(Katalog $katalog)
     {
-        return view('katalog.show', [
+        return view('admin.katalog.show', [
             'katalog' => $katalog
         ]);
     }
@@ -81,7 +79,7 @@ class KatalogController extends Controller
      */
     public function edit(Katalog $katalog)
     {
-        return view('katalog.edit', [
+        return view('admin.katalog.edit', [
             'katalog' => $katalog,
             'list_kategori' => Kategori::all()
         ]);
@@ -90,7 +88,7 @@ class KatalogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateKatalogRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Katalog  $katalog
      * @return \Illuminate\Http\Response
      */
@@ -110,7 +108,7 @@ class KatalogController extends Controller
         ]);
 
         Katalog::where('id', $katalog->id)->update($validateData);
-        return back()->with('success', 'Katalog Telah disimpan!');
+        return redirect('/admin/katalog')->with('success', 'Katalog Telah disimpan!');
     }
 
     /**

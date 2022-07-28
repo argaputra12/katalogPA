@@ -79,3 +79,8 @@ Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
     Route::get('/daftarHKI', [HkiController::class, 'create']);
     Route::post('/daftarHKI', [HkiController::class, 'store']);
 });
+
+
+Route::get('/admin/katalog', [KatalogController::class, 'index']);
+
+Route::resource('/admin/katalog', AdminKatalogController::class);
