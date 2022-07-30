@@ -15,13 +15,12 @@
 
 <div class="d-sm-flex align-items-center justify-content-end mb-4">
 
-    <form action="/dashboard/proyeksi" method="get" class="d-none d-sm-inline-block shadow" >
+    <form action="/dashboard/proyeksi" method="get" class="d-none d-sm-inline-block shadow">
 
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari PA" name="search"
-                        value="{{ request('search') }}">
-                    <button class="btn text-white icofont-search-1" type="submit " style="background-color: #267b9c"></button>
-                </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Cari PA" name="search" value="{{ request('search') }}">
+            <button class="btn text-white icofont-search-1" type="submit " style="background-color: #267b9c"></button>
+        </div>
     </form>
 </div>
 
@@ -33,7 +32,12 @@
                 <label class="btn active ">
                     <input type="radio" name="shuffle-filter" value="all" checked="checked" />Semua Kategori
                 </label>
-                <label class="btn">
+                @foreach ($list_kategori as $kategori)
+                    <label class="btn">
+                        <input type="radio" name="shuffle-filter" value="cat{{ $kategori->id }}" />{{ $kategori->kategori }}
+                    </label>     
+                @endforeach
+                {{-- <label class="btn">
                     <input type="radio" name="shuffle-filter" value="cat1" />Transaction Processing System
                 </label>
                 <label class="btn">
@@ -41,14 +45,29 @@
                 </label>
                 <label class="btn">
                     <input type="radio" name="shuffle-filter" value="cat3" />Decision Support System
-                </label>
+                </label> --}}
             </div>
         </div>
 
 
 
         <div class="row shuffle-wrapper portfolio-gallery">
-            <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;]">
+            @foreach ($list_katalog as $katalog)
+                <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat{{ $katalog->kategori_id }}&quot;]">
+                    <div class="position-relative doctor-inner-box">
+                        <div class="doctor-profile">
+                            <div class="doctor-img">
+                                <img src="images/gambarPA.png" alt="doctor-image" class="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="content mt-3">
+                            <h4 class="mb-0"><a href="doctor-single.html">{{ $katalog->judul }} </a></h4>
+                            <p>{{ $katalog->kategori->kategori }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            {{-- <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;]">
                 <div class="position-relative doctor-inner-box">
                     <div class="doctor-profile">
                         <div class="doctor-img">
@@ -224,7 +243,7 @@
                         <p>Decision Support System</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
         </div>

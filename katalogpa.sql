@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jul 2022 pada 13.01
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.9
+-- Generation Time: Jul 30, 2022 at 06:00 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,23 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `daftar_hkis`
+-- Table structure for table `daftar_hkis`
 --
 
 CREATE TABLE `daftar_hkis` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `kategoriKI` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenisKI` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subjenisKI` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `judulKI` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Surat_pernyataan_internal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Surat_pengalihan_hakcipta` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Scan_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contoh_ciptaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subjenis_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surat_pernyataan_internal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `surat_pengalihan_hakcipta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scan_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contoh_ciptaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url_ciptaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `summary_katsinov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_ciptaan_katsinov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `konfirmasi` enum('Belum dikonfirmasi','disetujui','ditolak') COLLATE utf8mb4_unicode_ci DEFAULT 'Belum dikonfirmasi',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -48,44 +49,95 @@ CREATE TABLE `daftar_hkis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `katalogs`
+-- Table structure for table `hkis`
+--
+
+CREATE TABLE `hkis` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `kategori_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subjenis_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul_ki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surat_pernyataan_internal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `surat_pengalihan_hakcipta` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scan_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contoh_ciptaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_ciptaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary_katsinov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_ciptaan_katsinov` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `konfirmasi` enum('Belum dikonfirmasi','disetujui','ditolak') COLLATE utf8mb4_unicode_ci DEFAULT 'Belum dikonfirmasi',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hkis`
+--
+
+INSERT INTO `hkis` (`id`, `kategori_ki`, `jenis_ki`, `subjenis_ki`, `judul_ki`, `surat_pernyataan_internal`, `surat_pengalihan_hakcipta`, `scan_ktp`, `contoh_ciptaan`, `url_ciptaan`, `summary_katsinov`, `link_ciptaan_katsinov`, `user_id`, `konfirmasi`, `created_at`, `updated_at`) VALUES
+(1, 'Daftar HKI', 'Paten', 'Desain Industri', 'oke', 'surat-pernyataan-internal/F8dOmF3eA74EZ94LwtGiMODC7Yr2sUeDDMr3rYmb.pdf', 'surat-pengalihan-hakcipta/z2liQFKpFOqv3OvcJnhF1XhHqtjWkXaSjFaqhXol.pdf', 'scan-ktp/ohLPrZ312BHuEj6bc1YHH2Jy0PK3tK65DJSc4PQu.pdf', 'contoh-ciptaan/aLvcxBZWKPxsKvE5KYn0GCzHs4DCIannxKq7oOzZ.pdf', 'oke.com', 'oke.com', 'oke', 1, 'disetujui', '2022-07-27 19:49:25', '2022-07-28 07:46:32'),
+(2, 'Daftar HKI', 'Hak Cipta', 'Aplikasi iOS', 'Proyek Akhir', 'surat-pernyataan-internal/ChN7Fe01xBZZ2sd3ZmTtWSxCpwmcexps1w3JJiUB.pdf', 'surat-pengalihan-hakcipta/0nnjG1t1IYuMnErOziLXJlkaW3KdcnoxpHD2y1BF.pdf', 'scan-ktp/dK5sQ8BYLJ0Z7GwXYKZQ5IEY6JSDKGkw648V6TkA.pdf', 'contoh-ciptaan/eR6XKzw1maqSmFongJuJS4nwAyRo7mazAtC1pM60.pdf', 'https://github.com/talitharizki26/katalogPA', 'katsinov', 'https://github.com/talitharizki26/katalogPA', 1, 'ditolak', '2022-07-28 07:36:46', '2022-07-28 07:46:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `katalogs`
 --
 
 CREATE TABLE `katalogs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Nim` bigint(20) NOT NULL,
+  `nim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_mhs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pembimbing1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pembimbing2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_video` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_demo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_HKI` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kategori_id` bigint(20) UNSIGNED NOT NULL,
+  `link_hki` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `katalogs`
+--
+
+INSERT INTO `katalogs` (`id`, `judul`, `deskripsi`, `nim`, `nama_mhs`, `pembimbing1`, `pembimbing2`, `link_video`, `link_demo`, `link_hki`, `kategori_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Perjuangan', '<div>Bagus bangetttt</div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'zGhfXXoIbeQ', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 3, 4, '2022-07-27 22:10:39', '2022-07-28 07:44:41'),
+(2, 'Proyek', '<div>Bagus banget</div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'zGhfXXoIbeQ', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 1, 4, '2022-07-27 22:37:39', '2022-07-27 22:37:39'),
+(3, 'Website Sertifikasi dibuka', '<div><strong><em>haloo</em></strong></div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'EyfQJv_fX7o', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 2, 4, '2022-07-28 07:44:26', '2022-07-28 07:44:26');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoris`
+-- Table structure for table `kategoris`
 --
 
 CREATE TABLE `kategoris` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `kategoriPA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `kategoris`
+--
+
+INSERT INTO `kategoris` (`id`, `kategori`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 'Transaction Processing System', '', '2022-07-26 16:17:51', '2022-07-26 16:17:51'),
+(2, 'Management Information System', '', '2022-07-26 16:17:51', '2022-07-26 16:17:51'),
+(3, 'Decision Support System', '', '2022-07-26 16:17:51', '2022-07-26 16:17:51');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -95,7 +147,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -109,7 +161,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -127,7 +179,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -138,7 +190,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `nama_role`, `created_at`, `updated_at`) VALUES
@@ -150,7 +202,7 @@ INSERT INTO `roles` (`id`, `nama_role`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -158,13 +210,13 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`, `created_at`, `updated_at`) VALUES
@@ -178,34 +230,41 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`, `created_
 --
 
 --
--- Indeks untuk tabel `daftar_hkis`
+-- Indexes for table `daftar_hkis`
 --
 ALTER TABLE `daftar_hkis`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `daftar_hkis_role_id_foreign` (`role_id`);
+  ADD KEY `daftar_hkis_role_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `katalogs`
+-- Indexes for table `hkis`
+--
+ALTER TABLE `hkis`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `daftar_hkis_role_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `katalogs`
 --
 ALTER TABLE `katalogs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `katalogs_kategori_id_foreign` (`kategori_id`);
+  ADD KEY `katalogs_kategori_id_foreign` (`kategori_id`),
+  ADD KEY `katalogs_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `kategoris`
+-- Indexes for table `kategoris`
 --
 ALTER TABLE `kategoris`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kategoris_role_id_foreign` (`role_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -213,13 +272,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -228,78 +287,66 @@ ALTER TABLE `users`
   ADD KEY `users_role_id_foreign` (`role_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `daftar_hkis`
+-- AUTO_INCREMENT for table `daftar_hkis`
 --
 ALTER TABLE `daftar_hkis`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `katalogs`
+-- AUTO_INCREMENT for table `hkis`
+--
+ALTER TABLE `hkis`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `katalogs`
 --
 ALTER TABLE `katalogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoris`
+-- AUTO_INCREMENT for table `kategoris`
 --
 ALTER TABLE `kategoris`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `daftar_hkis`
---
-ALTER TABLE `daftar_hkis`
-  ADD CONSTRAINT `daftar_hkis_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `katalogs`
+-- Constraints for table `katalogs`
 --
 ALTER TABLE `katalogs`
   ADD CONSTRAINT `katalogs_kategori_id_foreign` FOREIGN KEY (`kategori_id`) REFERENCES `kategoris` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `kategoris`
---
-ALTER TABLE `kategoris`
-  ADD CONSTRAINT `kategoris_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

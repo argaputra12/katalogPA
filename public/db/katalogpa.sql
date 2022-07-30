@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2022 at 05:14 PM
+-- Generation Time: Jul 30, 2022 at 06:00 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -107,7 +107,7 @@ CREATE TABLE `katalogs` (
 --
 
 INSERT INTO `katalogs` (`id`, `judul`, `deskripsi`, `nim`, `nama_mhs`, `pembimbing1`, `pembimbing2`, `link_video`, `link_demo`, `link_hki`, `kategori_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Proyek', '<div>Bagus bangetttt</div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'zGhfXXoIbeQ', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 3, 4, '2022-07-27 22:10:39', '2022-07-28 07:44:41'),
+(1, 'Perjuangan', '<div>Bagus bangetttt</div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'zGhfXXoIbeQ', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 3, 4, '2022-07-27 22:10:39', '2022-07-28 07:44:41'),
 (2, 'Proyek', '<div>Bagus banget</div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'zGhfXXoIbeQ', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 1, 4, '2022-07-27 22:37:39', '2022-07-27 22:37:39'),
 (3, 'Website Sertifikasi dibuka', '<div><strong><em>haloo</em></strong></div>', '1202218458', 'Melia Antika', 'Wawa Wikusna', 'Inne Rahardian', 'EyfQJv_fX7o', 'https://github.com/basecamp/trix', 'https://drive.google.com/', 2, 4, '2022-07-28 07:44:26', '2022-07-28 07:44:26');
 

@@ -18,7 +18,8 @@ class KatalogController extends Controller
     public function index()
     {
         return view('katalog', [
-            'list_katalog' => Katalog::all()
+            'list_katalog' => Katalog::with('kategori')->get(),
+            'list_kategori' => Kategori::all()
         ]);
     }
 
