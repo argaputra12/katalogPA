@@ -15,7 +15,7 @@
 <div class="container shadow mb-5 alice">
     <div class="row">
         <div class="col gray-bg">
-            <h6 class="my-4">Form Data Pengusul</h6>
+            <h6>Form Data Pengusul</h6>
             <hr>
 
             <div class="row">
@@ -23,7 +23,7 @@
 
                 <div class="col-sm-7">
                     <!-- <input class="form-control form-control-sm" id="formFileSm" type="text mb-2"> -->
-                    <div class="input-group mb-3 ">
+                    <div class="input-group mb-3">
                         <select class="form-select form-control form-control-sm" id="inputGroupSelect01">
                             <option selected>Pilih Kategori</option>
                             <option value="1">One</option>

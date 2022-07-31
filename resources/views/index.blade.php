@@ -6,9 +6,9 @@
 <!-- Slider Start -->
 <div class="banner malasngoding-slider">
     <div class=isi-slider>
-        <img src="images/about/katalog1.jpg" alt="Gambar 1">
-        <img src="images/about/katalog2.jpg" alt="Gambar 2">
-        <img src="images/about/katalog3.jpg" alt="Gambar 3">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1890&q=80" alt="Gambar 1">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Gambar 2">
+        <img src="https://images.unsplash.com/photo-1533669955142-6a73332af4db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1874&q=80" alt="Gambar 3">
     </div>
 </div>
 
@@ -63,13 +63,9 @@
                 <video width="350" height="250" controls autoplay muted>
                     <source src="images/video1.mp4" type="video/mp4">
                 </video>
-
-
                 <h6>Kelvin Yulinda Febianto</h6>
                 <h6>6701174046</h6>
                 <a>D3 Sistem Informasi / 2018</a>
-
-
             </div>
             
             <div class="col-lg-8 col-md-6">
@@ -90,16 +86,14 @@
                         meggunakan metodologi Waterfall. Aplikasi ini hanya digunakan dalam dinas
                         kesehatan dan puskesmas.
                     </p>
-
                     <div class="d-grid  my-5">
                         <form action="/apk1">
+                            @if (auth()->user() && auth()->user()->role_id == 1)
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
+                            @endif
                             <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/1IwdeqDgsGI">Lihat Demo Aplikasi</button>
                         </form>
-
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -130,7 +124,9 @@
 
                     <div class="d-grid  my-5">
                         <form action="/apk1">
+                            @if (auth()->user() && auth()->user()->role_id == 1)
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
+                            @endif
                             <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>
@@ -167,7 +163,9 @@
 
                     <div class="d-grid  my-5">
                         <form action="/apk1">
+                            @if (auth()->user() && auth()->user()->role_id == 1)
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
+                            @endif
                             <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>
@@ -203,7 +201,9 @@
 
                     <div class="d-grid  my-5">
                         <form action="/apk1">
+                            @if (auth()->user() && auth()->user()->role_id == 1)
                             <button class="btn btn-outline-primary shadow col-4">Lihat Buku PA</button>
+                            @endif
                             <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="https://youtu.be/et2n_ymoW3E">Lihat Demo Aplikasi</button>
 
                         </form>

@@ -8,10 +8,10 @@
         <div class="sidebar-brand-text">D3 Sistem Informasi</div>
     </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
     <!-- Nav Item - Dashboard -->
+    <div class="sidebar-heading">
+        Addons
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -89,13 +89,11 @@
     </li>
     @endif
     {{-- login --}}
-    <li class="nav-item">
+    <li class="nav-item" style="position: absolute; bottom: 0; left:0;">
         <form action="/logout" method="POST">
             @csrf
-            <button type="submit" class="nav-link bg-primary br-0">
+            <button type="submit" class="nav-link bg-primary" style="border: none; outline: none">
                 Logout <i data-feather="log-out"></i></button>
         </form>
     </li>
-
-
 </ul>

@@ -16,7 +16,7 @@
 
     <!-- Isi DIsini -->
 
-    <div class="card shadow mb-4">
+    <div class="card mb-4" style="padding: 0 !important">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar HKI</h6>
         </div>
@@ -26,7 +26,7 @@
                 <table class="table table-responsive" id="dataTable">
                     <thead align="center">
                         <tr>
-                            <th scope="col">No.</th>
+                            <th scope="col-md-4">No.</th>
                             <th scope="col">Kategori HKI</th>
                             <th scope="col">Jenis HKI</th>
                             <th scope="col">SubJenis HKI</th>
@@ -36,7 +36,7 @@
                             <th scope="col">Link Ciptaan Katsinov</th>
                             <th scope="col">Status</th>
                             <th scope="col">Tanggal Upload</th>
-                            <th scope="col" style="width: 300px;">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody align="center">
@@ -53,11 +53,11 @@
                             <td>{{ $hki->konfirmasi }}</td>
                             <td>{{ date('d-m-Y', strtotime($hki->created_at)) }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#berkasModal{{ $hki->id }}">Lihat Berkas</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#berkasModal{{ $hki->id }}">Lihat Berkas</button>
                                 <!-- Button trigger modal -->
                                 <!-- Modal -->
                                 <div class="modal fade" id="berkasModal{{ $hki->id }}" tabindex="-1" aria-labelledby="berkasModalLabel{{ $hki->id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="berkasModalLabel{{ $hki->id }}">Berkas</h5>

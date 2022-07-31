@@ -63,10 +63,10 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer" style="background-color:#4e73df">
+            <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span class="text-white">D3 Sistem Informasi</span>
+                        <span>Copyright © 2014-2021 D3 Sistem Informasi. All rights reserved.</span>
                     </div>
                 </div>
             </footer>
