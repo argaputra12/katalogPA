@@ -23,8 +23,8 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-responsive" id="dataTable">
-                    <thead align="center">
+                <table class="table" id="dataTable">
+                    <thead>
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Kategori HKI</th>
@@ -36,10 +36,10 @@
                             <th scope="col">Link Ciptaan Katsinov</th>
                             <th scope="col">Status</th>
                             <th scope="col">Tanggal Upload</th>
-                            <th scope="col" style="width: 300px;">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody align="center">
+                    <tbody>
                         @foreach ($list_hki as $hki)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
