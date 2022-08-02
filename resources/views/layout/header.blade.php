@@ -15,6 +15,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/home">Beranda</a>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="/katalog">Katalog</a>
                         @if (auth()->user() && auth()->user()->role_id == 4)
                         <li class="nav-item"><a class="nav-link" href="/pembimbing">Daftar Pengusul HKI</a>
                         </li>
@@ -24,11 +25,11 @@
                         </li>
                         @endif
                         @if (auth()->user() && auth()->user()->role_id == 2)
-                        <li class="nav-item"><a class="nav-link" href="/daftarHKI">HKI Mahasiswa</a>
+                        <li class="nav-item"><a class="nav-link" href="/pembimbing/hki">HKI Mahasiswa</a>
                         </li>
                         @endif
                         @if (auth()->user() && auth()->user()->role_id == 3)
-                        <li class="nav-item"><a class="nav-link" href="/daftarHKI">HKI Mahasiswa</a>
+                        <li class="nav-item"><a class="nav-link" href="/pembimbing/hki">HKI Mahasiswa</a>
                         </li>
                         @endif
                         <li class="nav-item"><a class="nav-link" href="/about">Tentang Kami</a>
