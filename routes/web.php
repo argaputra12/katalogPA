@@ -51,6 +51,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/katalog', [KatalogController::class, 'index']);
+//Route::get("/search", [KatalogController::class, "search"]);
 Route::get('/formpengusul', [FormpengusulController::class, 'index']);
 Route::get('/datapengusul', [DatapengusulController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);

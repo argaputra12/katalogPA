@@ -27,6 +27,8 @@
                     <thead align="center">
                         <tr>
                             <th scope="col">No.</th>
+                            <th scope="col">NIM Pengusul</th>
+                            <th scope="col">Nama Pengusul</th>
                             <th scope="col">Kategori HKI</th>
                             <th scope="col">Jenis HKI</th>
                             <th scope="col">SubJenis HKI</th>
@@ -43,6 +45,8 @@
                         @foreach ($list_hki as $hki)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $hki->nim_pengusul }}</td>
+                            <td>{{ $hki->nama_pengusul }}</td>
                             <td>{{ $hki->kategori_ki }}</td>
                             <td>{{ $hki->jenis_ki }}</td>
                             <td>{{ $hki->subjenis_ki }}</td>

@@ -50,7 +50,9 @@ class HkiController extends Controller
             'contoh_ciptaan' => 'file|max:100024',
             'url_ciptaan' => 'required',
             'summary_katsinov' => 'required',
-            'link_ciptaan_katsinov' => 'required'
+            'link_ciptaan_katsinov' => 'required',
+            'nama_pengusul' => 'required|max:255',
+            'nim_pengusul' => 'required|digits:10'
         ]);
 
         if ($request->file('surat_pernyataan_internal')) {

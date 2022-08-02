@@ -114,6 +114,24 @@ class KatalogController extends Controller
         return back()->with('success', 'Katalog Telah disimpan!');
     }
 
+    public function search(Request $request)
+    {
+
+        $search = $request->search;
+        $list_kategori = katalog::where('judul', 'Like', '%' . $search . '%')
+            ->get();
+        // dd($data);
+
+        if ($list_kategori->isNotEmpty()) {
+            return view('katalog', compact('list_kategori'));
+        } else {
+            $list_kategori = katalog::all();
+            return redirect()->back()->with('toast_error', 'Data tidak ditemukan!');
+            // $data = artikel::all();
+            return view("katalog", compact('list_kategori'));
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

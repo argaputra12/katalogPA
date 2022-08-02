@@ -17,6 +17,18 @@
         <div class="col gray-bg">
             <h6>Form Data Pengusul</h6>
             <hr>
+            <div class=" row">
+                <label for="pengalihanHakCipta" class="col-sm-4 col-form-label">Nama Pengusul</label>
+                <div class="col-sm-7">
+                    <input class="form-control form-control-sm" id="formFileSm" type="text mb-2">
+                </div>
+            </div>
+            <div class=" row">
+                <label for="pengalihanHakCipta" class="col-sm-4 col-form-label">NIM Pengusul</label>
+                <div class="col-sm-7">
+                    <input class="form-control form-control-sm" id="formFileSm" type="text mb-2">
+                </div>
+            </div>
 
             <div class="row">
                 <label for="pengalihanHakCipta" class="col-sm-4 col-form-label">Kategori KI</label>
