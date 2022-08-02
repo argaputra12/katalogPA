@@ -7,6 +7,9 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreKatalogRequest;
 use App\Http\Requests\UpdateKatalogRequest;
+use App\Models\Apk1;
+use App\Http\Requests\StoreApk1Request;
+use App\Http\Requests\UpdateApk1Request;
 
 class KatalogController extends Controller
 {
@@ -88,6 +91,16 @@ class KatalogController extends Controller
         ]);
     }
 
+    public function satuanKatalog($id)
+    {
+        $data = katalog::find($id);
+        $data2 = katalog::where('id', '=', $id)->get();
+        // dd($data);
+        return view("satuanKatalog", compact("data", "data2"));
+    }
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -118,17 +131,23 @@ class KatalogController extends Controller
     {
 
         $search = $request->search;
-        $list_kategori = katalog::where('judul', 'Like', '%' . $search . '%')
+        // dd($search);
+        $list_katalog = katalog::where('judul', 'Like', '%' . $search . '%')
             ->get();
-        // dd($data);
+        // dd($list_kategori);
 
-        if ($list_kategori->isNotEmpty()) {
-            return view('katalog', compact('list_kategori'));
+        if ($list_katalog->isNotEmpty()) {
+
+            //$list_katalog = Katalog::all();
+            $list_kategori = Kategori::all();
+            $list_katalog = katalog::where('judul', 'Like', '%' . $search . '%')
+                ->get();
+            return view('katalog', compact('list_katalog', 'list_kategori'));
         } else {
-            $list_kategori = katalog::all();
+            $list_katalog = katalog::all();
             return redirect()->back()->with('toast_error', 'Data tidak ditemukan!');
-            // $data = artikel::all();
-            return view("katalog", compact('list_kategori'));
+            //dd("ada");
+            return view("katalog", compact('list_katalog'));
         }
     }
 

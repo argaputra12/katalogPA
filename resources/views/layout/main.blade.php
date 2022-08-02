@@ -63,21 +63,20 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    $('.demo-aplikasi').on('click', function(e) {
-        const link = $(this).data('link');
-        Swal.fire({
-            title: '<strong>Demo Aplikasi</strong>',
-            icon: 'info',
-            html:
-            'Silahkan ' +
-            '<a href="'+ link +'">Klik di sini</a> ',
-            showCancelButton: true,
-            focusConfirm: false,
-            cancelButtonText: '<i class="fa fa-thumbs-down">Tutup</i>'
-        })
-    });
-</script>
+        $('.demo-aplikasi').on('click', function(e) {
+            const link = $(this).data('link');
+            Swal.fire({
+                title: '<strong>Demo Aplikasi</strong>',
+                icon: 'info',
+                html: 'Silahkan ' +
+                    '<a href="' + link + '">Klik di sini</a> ',
+                showCancelButton: true,
+                focusConfirm: false,
+                cancelButtonText: '<i class="fa fa-thumbs-down">Tutup</i>'
+            })
+        });
+    </script>
 
-</body>
+    <!-- </body>
 
-</html>
+</html> -->

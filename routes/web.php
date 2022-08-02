@@ -51,7 +51,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/katalog', [KatalogController::class, 'index']);
-//Route::get("/search", [KatalogController::class, "search"]);
+Route::get("/search", [KatalogController::class, "search"]);
 Route::get('/formpengusul', [FormpengusulController::class, 'index']);
 Route::get('/datapengusul', [DatapengusulController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
@@ -86,7 +86,8 @@ Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
 });
 
 
-
+Route::get("/satuanKatalog/{id}", [KatalogController::class, "satuanKatalog"]);
+//Route::get('/satuanKatalog/{id}', [SatuanKatalogController::class, 'index']);
 Route::resource('/admin/katalog', AdminKatalogController::class);
 Route::resource('/pembimbing/hki', PembimbingHkiController::class);
 Route::get('/kaprodi/hki', [KaprodiHKIController::class, 'index']);

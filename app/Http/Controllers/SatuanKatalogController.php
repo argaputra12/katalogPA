@@ -7,18 +7,25 @@ use App\Models\Katalog;
 use App\Http\Requests\StoreApk1Request;
 use App\Http\Requests\UpdateApk1Request;
 
-class Apk1Controller extends Controller
+class SatuanKatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('apk1');
-        //
+        $data = katalog::find($id);
+        return view("satuanKatalog", compact("data"));
     }
+
+    // public function satuanKatalog($id)
+    // {
+    //     $data = katalog::find($id);
+    //     return view("satuanKatalog", compact("data"));
+    // }
+
 
     /**
      * Show the form for creating a new resource.
@@ -74,6 +81,8 @@ class Apk1Controller extends Controller
     {
         //
     }
+
+
 
     /**
      * Remove the specified resource from storage.

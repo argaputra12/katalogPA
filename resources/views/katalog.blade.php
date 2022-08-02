@@ -16,7 +16,7 @@
 <div class="d-sm-flex align-items-center justify-content-end mb-4">
 
     <form action="{{url('/search')}}" method="get" class="d-none d-sm-inline-block shadow">
-
+        @csrf
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Cari PA" name="search" value="{{ request('search') }}">
             <button class="btn text-white icofont-search-1" value="Search" style="background-color: #267b9c"></button>
@@ -37,7 +37,7 @@
                     <input type="radio" name="shuffle-filter" value="cat{{ $kategori->id }}" />{{ $kategori->kategori }}
                 </label>
                 @endforeach
-                {{-- <label class="btn">
+                <!-- -- <label class="btn">
                     <input type="radio" name="shuffle-filter" value="cat1" />Transaction Processing System
                 </label>
                 <label class="btn">
@@ -45,7 +45,7 @@
                 </label>
                 <label class="btn">
                     <input type="radio" name="shuffle-filter" value="cat3" />Decision Support System
-                </label> --}}
+                </label> -- -->
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="content mt-3">
-                        <h4 class="mb-0"><a href="doctor-single.html">{{ $katalog->judul }} </a></h4>
+                        <h4 class="mb-0"><a href="{{url('/satuanKatalog',$katalog->id)}}">{{ $katalog->judul }} </a></h4>
                         <p>{{ $katalog->kategori->kategori }}</p>
                     </div>
                 </div>
