@@ -56,12 +56,16 @@ class KatalogController extends Controller
             'link_video' => 'required|max:255',
             'link_demo' => 'required|max:255',
             'link_hki' => 'required|max:255',
+            'file_buku' => 'file|mimes:pdf|required',
             'kategori_id' => 'required'
-        ]);
 
+        ]);
+        if ($request->file('file_buku')) {
+            $validateData['file_buku'] = $request->file('file_buku')->store('file_buku');
+        }
         $validateData['user_id'] = auth()->user()->id;
         Katalog::create($validateData);
-        return back()->with('success', 'Katalog Telah disimpan!');
+        return back()->with('success', 'Katalognya Telah disimpan!');
     }
 
     /**

@@ -87,7 +87,6 @@ Route::group(['middleware' => ['auth', 'cekRole:1']], function () {
 
 
 Route::get("/satuanKatalog/{id}", [KatalogController::class, "satuanKatalog"]);
-//Route::get('/satuanKatalog/{id}', [SatuanKatalogController::class, 'index']);
 Route::resource('/admin/katalog', AdminKatalogController::class);
 Route::resource('/pembimbing/hki', PembimbingHkiController::class);
 Route::get('/kaprodi/hki', [KaprodiHKIController::class, 'index']);

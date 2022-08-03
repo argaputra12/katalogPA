@@ -67,7 +67,7 @@
                 <h6>6701174046</h6>
                 <a>D3 Sistem Informasi / 2018</a>
             </div>
-            
+
             <div class="col-lg-8 col-md-6">
                 <div class="doctor-details mt-4 mt-lg-0">
                     <h2 class="text-md">Dashboard Daerah Rawan Gizi Buruk</h2>

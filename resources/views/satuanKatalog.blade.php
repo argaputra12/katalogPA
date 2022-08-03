@@ -14,12 +14,14 @@
                                 <h3>{{ $katalog->judul }}</h3>
                                 <a>{{ $katalog->nama_mhs }}</a> <a>/</a>
                                 <a>{{ $katalog->nim }}</a> <br>
+                                <button type="button" class="btn btn-outline-primary shadow col-4 demo-aplikasi" data-link="{{ $katalog->link_demo }}">Lihat Demo Aplikasi</button>
                             </div>
+
                             <div class="pdf">
-                                <embed type="application/pdf" src="/images/PA_kelvin.pdf" width="900" height="940"></embed>
+                                <embed type="application/pdf" src="{{ Storage::url($katalog->file_buku) }}" width="900" height="940"></embed>
                             </div>
                             <div class="video">
-                                <embed type="application/pdf" src="/images/PA_kelvin.pdf" width="900" height="940"></embed>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $katalog->link_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         @endforeach
