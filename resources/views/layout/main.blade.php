@@ -13,15 +13,21 @@
 
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Icon Font Css -->
     <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/icofont/icofont.min.css') }}">
     <!-- Slick Slider  CSS -->
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick.css') }}">
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="{{ asset('plugins/slick-carousel/slick/slick-theme.css') }}">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 
 </head>

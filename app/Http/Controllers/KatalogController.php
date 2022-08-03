@@ -97,10 +97,10 @@ class KatalogController extends Controller
 
     public function satuanKatalog($id)
     {
-        $data = katalog::find($id);
-        $data2 = katalog::where('id', '=', $id)->get();
+        // $data = katalog::find($id);
+        $data = Katalog::where('id', '=', $id)->get();
         // dd($data);
-        return view("satuanKatalog", compact("data", "data2"));
+        return view("satuanKatalog", compact("data"));
     }
 
 

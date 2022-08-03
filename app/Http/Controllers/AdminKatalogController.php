@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Katalog;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminKatalogController extends Controller
 {
@@ -40,6 +42,7 @@ class AdminKatalogController extends Controller
      */
     public function store(Request $request)
     {
+        // store file buku
         $validateData = $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required|max:255',
@@ -53,11 +56,39 @@ class AdminKatalogController extends Controller
             'file_buku' => 'file|mimes:pdf|required',
             'kategori_id' => 'required'
         ]);
-        if ($request->file('file_buku')) {
-            $validateData['file_buku'] = $request->file('file_buku')->store('file_buku');
-        }
-        $validateData['user_id'] = auth()->user()->id;
-        Katalog::create($validateData);
+
+        // dd($validateData['judul']);
+
+        $file = $request->file_buku;
+        $fileExtension = $file->getClientOriginalExtension();
+        $fileName = $file->storeAs('images/bukupa', Auth::user()->id.'.'.$fileExtension);
+
+        // dd($fileName);
+        $destinationPath = public_path('/images/bukupa');
+        $file->move($destinationPath, $fileName);
+
+
+        // if ($request->file('file_buku')) {
+        //     $validateData['file_buku'] = $request->file('file_buku')->store('file_buku');
+        // }
+        // $validateData['user_id'] = auth()->user()->id;
+
+        $inserted_data = [
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'nim' => $request->nim,
+            'nama_mhs' => $request->nama_mhs,
+            'pembimbing1' => $request->pembimbing1,
+            'pembimbing2' => $request->pembimbing2,
+            'link_video' => $request->link_video,
+            'link_demo' => $request->link_demo,
+            'link_hki' => $request->link_hki,
+            'file_buku' => $fileName,
+            'kategori_id' => $request->kategori_id,
+            'user_id' => auth()->user()->id
+        ];
+
+        Katalog::create($inserted_data);
         return redirect('/admin/katalog')->with('success', 'Katalog Telah disimpan!');
     }
 
